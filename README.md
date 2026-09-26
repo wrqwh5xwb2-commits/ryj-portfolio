@@ -20,6 +20,14 @@
 | 大数据 | Hadoop、HBase、Hive（伪分布式环境独立搭建） |
 | 工具链 | Git、Linux、VMware、AI 编程工具（WorkBuddy/Codex/MCP） |
 
+## 新增可运行项目：知答 SupportLab
+
+[进入项目源码与运行说明](./09-SupportLab/) · [查看评测报告](./09-SupportLab/docs/benchmark-v1.json) · [学习路线](./09-SupportLab/docs/01-第一课与学习路线.md)
+
+Python + FastAPI + scikit-learn + SQLite 实现客服问题分类、规范检索、原文引用和人工工单闭环。附16项自动测试、模拟数据评测与教学文档；采用AI辅助开发，尚未上线真实业务。
+
+![知答 SupportLab 实际运行截图](./09-SupportLab/output/playwright/05-answer.png)
+
 ## 项目索引
 
 | # | 项目 | 类型 | 一句话 |
@@ -32,6 +40,7 @@
 | 06 | [晨达电脑维修官网](./06-晨达电脑维修官网/) | Web 上线 | 真实商业站点，含 SEO/备案/部署 |
 | 07 | [晨达微信小程序](./07-晨达微信小程序/) | 小程序 | 8页面+云开发后端 |
 | 08 | [Hadoop+HBase 环境搭建](./08-Hadoop-HBase环境搭建/) | 大数据运维 | 虚拟机伪分布式全链路排错 |
+| 09 | [知答 SupportLab](./09-SupportLab/) | AI 应用 / NLP / 全栈 | 问题分类、规范检索、人工工单与可复现评测 |
 
 ---
 

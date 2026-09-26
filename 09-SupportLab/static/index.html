@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>知答 SupportLab · 客服协作实验室</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="知答首页"><span class="brandmark">知</span><span>知答<small>SUPPORTLAB</small></span></a>
+  <div class="workspace-label">客服协作实验室</div>
+  <nav aria-label="主导航">
+    <button class="nav active" data-page="desk"><span>01</span>问题工作台</button>
+    <button class="nav" data-page="tickets"><span>02</span>工单管理</button>
+    <button class="nav" data-page="knowledge"><span>03</span>知识库</button>
+    <button class="nav" data-page="evaluation"><span>04</span>效果评测</button>
+    <button class="nav" data-page="learn"><span>05</span>学习地图</button>
+  </nav>
+  <div class="sidebar-note"><span class="local-dot"></span> 本地运行 · 数据保存在本机<p>一个从问题到处理结果<br>都能追溯的 AI 应用项目。</p><span class="version">作品集演示 / v1.0</span></div>
+</aside>
+<main>
+  <header class="topbar"><div>WORKSPACE <span>/</span> <strong id="breadcrumb">问题工作台</strong></div><span class="tag">原创模拟业务数据</span></header>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <section id="page-desk" class="page">
+    <div class="heading"><div class="eyebrow">从一句问题开始</div><h1>让每一次处理，都有依据。</h1><p>识别问题、找到规范，把需要人来判断的部分交给人。</p></div>
+    <div class="stats"><div><span>知识规范</span><strong id="stat-documents">—</strong><small>篇可追溯原文</small></div><div><span>已分析问题</span><strong id="stat-questions">—</strong><small>条本机记录</small></div><div><span>待跟进工单</span><strong id="stat-open">—</strong><small>条尚未关闭</small></div><div><span>已完成工单</span><strong id="stat-closed">—</strong><small>条闭环记录</small></div></div>
+    <div class="desk-grid">
+      <div>
+        <form id="question-form" class="panel question-panel"><div class="panel-title"><h2>客户遇到了什么问题？</h2><span class="tag subtle">中文分诊</span></div><label for="question" class="sr-only">客户问题</label><textarea id="question" rows="5" minlength="2" maxlength="2000" required placeholder="例如：退款验收通过好几天了，钱还没到账，应该怎么办？"></textarea><div class="examples"><span>试一试</span><button type="button" class="example" data-query="退款验收通过后多久能到账？">退款进度</button><button type="button" class="example" data-query="银行卡对同一个订单重复扣款了">重复扣款</button><button type="button" class="example" data-query="明天天气怎么样？">未知问题</button></div><div class="form-bottom"><label>检索方式<select id="mode"><option value="hybrid">双路融合 · RRF</option><option value="tfidf">TF-IDF 基线</option><option value="bm25">BM25 基线</option></select></label><button id="analyze-button" class="primary" type="submit">分析并查找依据 <span>↗</span></button></div></form>
+        <section id="answer-panel" class="panel answer-panel" aria-live="polite"><div class="empty-state"><div class="empty-symbol">?</div><h2>把问题放进来，看看系统如何判断</h2><p>回答将展示对应规范和模型分诊结果。<br>依据不足时，系统会建议人工核实。</p></div></section>
+      </div>
+      <aside class="evidence-column"><div class="panel evidence-panel"><div class="panel-title"><h2>处理依据</h2><span id="source-count" class="tag subtle">等待提问</span></div><div id="sources"><div class="evidence-empty"><span>01</span><h3>原文可查</h3><p>每条候选资料都展示来源、正文和匹配分数，方便你判断是否适用。</p><span>02</span><h3>判断可复核</h3><p>分类来自训练模型，优先级来自关键词规则。低分结果会提醒人工复核。</p><span>03</span><h3>处理可追踪</h3><p>需要进一步核实的问题，可以转成工单并留下处理记录。</p></div></div></div><div class="inline-note">当前回答方式：相关规范原文摘录。<br>未接入生成式大模型，不会代替客服执行退款。</div></aside>
+    </div>
+    <section class="history-section"><div class="panel-title"><h2>最近的问题</h2><span>保留最近 15 条记录</span></div><div id="history" class="history"></div></section>
+  </section>
+  <section id="page-tickets" class="page" hidden><div class="heading"><div class="eyebrow">人工判断，留下记录</div><h1>把问题处理完。</h1><p>从工作台创建工单，按“待处理 → 处理中 → 已关闭”完成一次闭环。</p></div><div class="toolbar"><label>筛选状态 <select id="ticket-filter"><option value="all">全部工单</option><option>待处理</option><option>处理中</option><option>已关闭</option></select></label><button id="refresh-tickets" class="secondary">刷新列表</button></div><div id="ticket-list"></div></section>
+  <section id="page-knowledge" class="page" hidden><div class="heading"><div class="eyebrow">知识决定回答边界</div><h1>让规范成为共同依据。</h1><p>内置 12 篇虚构商店规范。可添加自己的 TXT 或 Markdown 资料，保存后立即参与检索。</p></div><div class="knowledge-grid"><form id="document-form" class="panel"><h2>添加一篇规范</h2><label>文档标题<input id="doc-title" minlength="2" maxlength="120" required placeholder="例如：会员积分使用规则"></label><label>业务类别<select id="doc-category" class="categories"></select></label><label class="file-label">从文件导入正文<input id="doc-file" type="file" accept=".txt,.md"></label><label>规范正文<textarea id="doc-content" rows="9" minlength="15" maxlength="12000" required placeholder="建议一篇规范只讲一个问题，写明适用范围、办理步骤和例外。15 至 12,000 字。"></textarea></label><button class="primary" type="submit">保存并更新索引</button><p class="muted">请使用学习资料，避免放入客户个人信息。添加文档不会自动训练分类模型。</p></form><div><label class="search-label">查找规范<input id="doc-search" type="search" placeholder="搜索标题、正文或类别"></label><div id="document-list"></div></div></div></section>
+  <section id="page-evaluation" class="page" hidden><div class="heading"><div class="eyebrow">用可复现的结果讨论效果</div><h1>模型到底做得怎么样？</h1><p>相同资料、相同问题，对比三种检索方法，并检查模型在哪里判断错了。</p></div><div class="toolbar"><p class="muted">固定模拟评测集独立运行，不读取新导入的文档，不新增业务问题。</p><button id="run-evaluation" class="primary">重新运行评测</button></div><div id="evaluation-content"><div class="panel empty-state">还没有评测结果，点击上方按钮运行。</div></div></section>
+  <section id="page-learn" class="page" hidden><div class="heading"><div class="eyebrow">从会用，到能独立修改</div><h1>这是你的学习路线。</h1><p>每一课都以一个能看见的结果结束。完成练习后，再讲下一层原理。</p></div><div class="lesson-intro panel"><h2>第一课 · 先把完整流程走一遍</h2><p>在工作台问“退款验收通过后多久能到账？”，找到“退款到账与进度查询”规范。把工单创建出来，切换到工单管理，接单并写下处理结果。</p><button class="primary" id="start-lesson">带着示例开始</button></div><div class="lesson-list"><article><span>01 / 产品</span><h2>用自己的话解释问题</h2><p>这不是自动替人退款的系统。它帮助客服分流问题、查找规定、记录处理。</p><strong>验收：两分钟演示一次完整工单。</strong></article><article><span>02 / 数据</span><h2>让新知识立即生效</h2><p>导入一篇“会员积分规则”，再问兑换比例。观察来源变化，理解数据决定回答边界。</p><strong>验收：亲手补充一篇规范并查到它。</strong></article><article><span>03 / Python</span><h2>跟踪一次请求</h2><p>从浏览器发送问题，走到 app/main.py，再进入 engine.py，最后把结果写进 SQLite。</p><strong>验收：画出请求路径，说出每层作用。</strong></article><article><span>04 / 机器学习</span><h2>看懂“训练”和“评测”</h2><p>在 dataset.py 找到训练与测试样本，用相似词特征理解 TF-IDF，解释分类分数的限制。</p><strong>验收：添加训练样本，保留测试集，重新评测。</strong></article><article><span>05 / 工程</span><h2>让错误变得可控</h2><p>运行自动测试，尝试重复导入、空问题和不合法的工单状态变化，观察错误提示。</p><strong>验收：说明三个边界情况和处理方法。</strong></article><article><span>06 / 面试</span><h2>拿真实证据介绍项目</h2><p>讲清自己修改的内容、测试结果、失败案例和下一步计划。完整资料见 docs 文件夹。</p><strong>验收：不用照稿回答十个项目问题。</strong></article></div></section>
+  <footer>知答 SupportLab <span>可解释的分诊 · 可追溯的依据 · 可复现的评测</span></footer>
+</main>
+<dialog id="ticket-dialog"><form id="ticket-form"><div class="panel-title"><h2>确认并创建工单</h2><button type="button" id="close-dialog" class="text-button">取消</button></div><label>工单标题<input id="ticket-title" minlength="2" maxlength="120" required></label><label>业务分类<select id="ticket-category" class="categories"></select></label><label>优先级<select id="ticket-priority"><option>普通</option><option>高</option></select></label><p class="muted">模型只提供建议，请确认分类和优先级。原问题将完整保存。</p><button type="submit" class="primary">创建工单</button></form></dialog>
+</body></html>

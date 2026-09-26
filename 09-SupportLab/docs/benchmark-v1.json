@@ -1,0 +1,1113 @@
+{
+  "generated_at": "2026-09-18T15:06:13.103079+00:00",
+  "dataset_sha256": "3ab28357ffa11260a6602f4bb8111b270fe6b726c3df4fec1d2b0a0ba8234ff5",
+  "scope": "原创模拟数据；固定开发评测集，非盲测。小样本结果不能代表真实客服效果。时延只测本机检索，不含网络。",
+  "counts": {
+    "train": 96,
+    "classification_test": 24,
+    "retrieval_test": 24,
+    "unknown_test": 6,
+    "documents": 12
+  },
+  "classification": {
+    "accuracy": 0.9583,
+    "macro_f1": 0.9577,
+    "labels": [
+      "发票开具",
+      "商品保修",
+      "支付订单",
+      "物流配送",
+      "账户安全",
+      "退货退款"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
+    ],
+    "cases": [
+      {
+        "text": "运单连续几天没有新的运输记录",
+        "expected": "物流配送",
+        "predicted": "物流配送",
+        "score": 0.459,
+        "correct": true
+      },
+      {
+        "text": "快递说已签收，可我没拿到包裹",
+        "expected": "物流配送",
+        "predicted": "物流配送",
+        "score": 0.841,
+        "correct": true
+      },
+      {
+        "text": "收货地点填错了，现在还能修改吗",
+        "expected": "物流配送",
+        "predicted": "物流配送",
+        "score": 0.449,
+        "correct": true
+      },
+      {
+        "text": "下单两天仍没有发货，如何催促",
+        "expected": "物流配送",
+        "predicted": "物流配送",
+        "score": 0.318,
+        "correct": true
+      },
+      {
+        "text": "退回去的商品商家已收到，退款何时到账",
+        "expected": "退货退款",
+        "predicted": "退货退款",
+        "score": 0.724,
+        "correct": true
+      },
+      {
+        "text": "刚买的东西不喜欢，我要退掉",
+        "expected": "退货退款",
+        "predicted": "退货退款",
+        "score": 0.517,
+        "correct": true
+      },
+      {
+        "text": "无理由退货需要我支付寄回运费吗",
+        "expected": "退货退款",
+        "predicted": "退货退款",
+        "score": 0.604,
+        "correct": true
+      },
+      {
+        "text": "退款申请完成了但银行还没入账",
+        "expected": "退货退款",
+        "predicted": "退货退款",
+        "score": 0.676,
+        "correct": true
+      },
+      {
+        "text": "同一笔订单银行卡扣了两遍款",
+        "expected": "支付订单",
+        "predicted": "支付订单",
+        "score": 0.747,
+        "correct": true
+      },
+      {
+        "text": "已经付钱，页面却仍然显示待支付",
+        "expected": "支付订单",
+        "predicted": "支付订单",
+        "score": 0.663,
+        "correct": true
+      },
+      {
+        "text": "未付款的订单过多久会自动关闭",
+        "expected": "支付订单",
+        "predicted": "支付订单",
+        "score": 0.706,
+        "correct": true
+      },
+      {
+        "text": "付款过程中失败了该怎么办",
+        "expected": "支付订单",
+        "predicted": "支付订单",
+        "score": 0.631,
+        "correct": true
+      },
+      {
+        "text": "换了手机号码无法接收登录验证码",
+        "expected": "账户安全",
+        "predicted": "账户安全",
+        "score": 0.924,
+        "correct": true
+      },
+      {
+        "text": "我的账号有陌生人的登录记录",
+        "expected": "账户安全",
+        "predicted": "账户安全",
+        "score": 0.69,
+        "correct": true
+      },
+      {
+        "text": "密码记不起来如何重设",
+        "expected": "账户安全",
+        "predicted": "账户安全",
+        "score": 0.352,
+        "correct": true
+      },
+      {
+        "text": "旧手机号停用了，想重新绑定",
+        "expected": "账户安全",
+        "predicted": "账户安全",
+        "score": 0.626,
+        "correct": true
+      },
+      {
+        "text": "单位报销要用发票，在哪里申请",
+        "expected": "发票开具",
+        "predicted": "发票开具",
+        "score": 0.721,
+        "correct": true
+      },
+      {
+        "text": "下载的发票上公司名称填错了",
+        "expected": "发票开具",
+        "predicted": "发票开具",
+        "score": 0.803,
+        "correct": true
+      },
+      {
+        "text": "电子发票申请后多久能收到",
+        "expected": "发票开具",
+        "predicted": "发票开具",
+        "score": 0.809,
+        "correct": true
+      },
+      {
+        "text": "我要把个人发票换成公司的",
+        "expected": "发票开具",
+        "predicted": "发票开具",
+        "score": 0.755,
+        "correct": true
+      },
+      {
+        "text": "设备买来半年就无法充电，可以保修吗",
+        "expected": "商品保修",
+        "predicted": "商品保修",
+        "score": 0.73,
+        "correct": true
+      },
+      {
+        "text": "送修必须带上什么购买证明",
+        "expected": "商品保修",
+        "predicted": "物流配送",
+        "score": 0.327,
+        "correct": false
+      },
+      {
+        "text": "过了保修时间的设备还可以付费维修吗",
+        "expected": "商品保修",
+        "predicted": "商品保修",
+        "score": 0.72,
+        "correct": true
+      },
+      {
+        "text": "机器意外摔坏能不能免费修",
+        "expected": "商品保修",
+        "predicted": "商品保修",
+        "score": 0.526,
+        "correct": true
+      }
+    ]
+  },
+  "retrieval": [
+    {
+      "mode": "tfidf",
+      "recall_at_3": 1.0,
+      "mrr_at_3": 0.9583,
+      "p95_ms": 0.66,
+      "cases": [
+        {
+          "query": "普通现货付款后多久发货",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "payment-close",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "物流已经三天不更新了该怎么催",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发货后能修改收货地址吗",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "payment-close",
+            "shipping-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "显示签收却没收到包裹该找谁",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "payment-fail",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "七天无理由退货的运费谁付",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "payment-close",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "定制商品能申请无理由退货吗",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款验收通过后多久能到账",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "refund-policy",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款五个工作日还没入账怎么办",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "invoice-create",
+            "warranty-exclusions"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "银行卡对同一个订单重复扣款了",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-fail",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "已经付款订单仍是待支付",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-close",
+            "payment-fail",
+            "refund-time"
+          ],
+          "rank": 2
+        },
+        {
+          "query": "没支付的订单多久关闭",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "invoice-correct",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "不同订单是否能合并付款",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "payment-fail",
+            "shipping-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "登录验证码多久会过期",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "account-risk",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "绑定的手机停用如何找回密码",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "payment-fail",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "有陌生设备登录我的账号怎么办",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "account-login",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "注销账号前需要处理哪些订单",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "payment-close",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "公司发票开具需要什么信息",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "payment-close"
+          ],
+          "rank": 2
+        },
+        {
+          "query": "是否支持增值税专用发票",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-create",
+            "invoice-correct",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发票公司名称写错如何更正",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "全额退货退款后发票怎么处理",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "设备保修期限是多少个月",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "免费维修需要提供什么凭证",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "摔坏的设备是否可以免费维修",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "付费维修报价需要先确认吗",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "payment-close"
+          ],
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "mode": "bm25",
+      "recall_at_3": 1.0,
+      "mrr_at_3": 0.9792,
+      "p95_ms": 0.54,
+      "cases": [
+        {
+          "query": "普通现货付款后多久发货",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "payment-close",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "物流已经三天不更新了该怎么催",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发货后能修改收货地址吗",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "shipping-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "显示签收却没收到包裹该找谁",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "payment-fail",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "七天无理由退货的运费谁付",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "payment-close",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "定制商品能申请无理由退货吗",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款验收通过后多久能到账",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "refund-policy",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款五个工作日还没入账怎么办",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "invoice-create",
+            "warranty-exclusions"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "银行卡对同一个订单重复扣款了",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-fail",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "已经付款订单仍是待支付",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-fail",
+            "payment-close",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "没支付的订单多久关闭",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "invoice-correct",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "不同订单是否能合并付款",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "payment-fail",
+            "shipping-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "登录验证码多久会过期",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "account-risk",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "绑定的手机停用如何找回密码",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "payment-fail",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "有陌生设备登录我的账号怎么办",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "account-login",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "注销账号前需要处理哪些订单",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "payment-close",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "公司发票开具需要什么信息",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "payment-close"
+          ],
+          "rank": 2
+        },
+        {
+          "query": "是否支持增值税专用发票",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-create",
+            "invoice-correct",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发票公司名称写错如何更正",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "全额退货退款后发票怎么处理",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "payment-close",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "设备保修期限是多少个月",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "免费维修需要提供什么凭证",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "摔坏的设备是否可以免费维修",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "付费维修报价需要先确认吗",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "payment-close"
+          ],
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "recall_at_3": 1.0,
+      "mrr_at_3": 0.9583,
+      "p95_ms": 0.62,
+      "cases": [
+        {
+          "query": "普通现货付款后多久发货",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "payment-close",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "物流已经三天不更新了该怎么催",
+          "expected": "shipping-time",
+          "retrieved": [
+            "shipping-time",
+            "shipping-address"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发货后能修改收货地址吗",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "shipping-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "显示签收却没收到包裹该找谁",
+          "expected": "shipping-address",
+          "retrieved": [
+            "shipping-address",
+            "payment-fail",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "七天无理由退货的运费谁付",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "payment-close",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "定制商品能申请无理由退货吗",
+          "expected": "refund-policy",
+          "retrieved": [
+            "refund-policy",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款验收通过后多久能到账",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "refund-policy",
+            "invoice-correct"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "退款五个工作日还没入账怎么办",
+          "expected": "refund-time",
+          "retrieved": [
+            "refund-time",
+            "invoice-create",
+            "warranty-exclusions"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "银行卡对同一个订单重复扣款了",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-fail",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "已经付款订单仍是待支付",
+          "expected": "payment-fail",
+          "retrieved": [
+            "payment-close",
+            "payment-fail",
+            "refund-time"
+          ],
+          "rank": 2
+        },
+        {
+          "query": "没支付的订单多久关闭",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "invoice-correct",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "不同订单是否能合并付款",
+          "expected": "payment-close",
+          "retrieved": [
+            "payment-close",
+            "payment-fail",
+            "shipping-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "登录验证码多久会过期",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "account-risk",
+            "payment-fail"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "绑定的手机停用如何找回密码",
+          "expected": "account-login",
+          "retrieved": [
+            "account-login",
+            "payment-fail",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "有陌生设备登录我的账号怎么办",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "account-login",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "注销账号前需要处理哪些订单",
+          "expected": "account-risk",
+          "retrieved": [
+            "account-risk",
+            "payment-close",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "公司发票开具需要什么信息",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "payment-close"
+          ],
+          "rank": 2
+        },
+        {
+          "query": "是否支持增值税专用发票",
+          "expected": "invoice-create",
+          "retrieved": [
+            "invoice-create",
+            "invoice-correct",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "发票公司名称写错如何更正",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "invoice-create",
+            "warranty-policy"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "全额退货退款后发票怎么处理",
+          "expected": "invoice-correct",
+          "retrieved": [
+            "invoice-correct",
+            "refund-time",
+            "payment-close"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "设备保修期限是多少个月",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "免费维修需要提供什么凭证",
+          "expected": "warranty-policy",
+          "retrieved": [
+            "warranty-policy",
+            "warranty-exclusions",
+            "refund-time"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "摔坏的设备是否可以免费维修",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "account-risk"
+          ],
+          "rank": 1
+        },
+        {
+          "query": "付费维修报价需要先确认吗",
+          "expected": "warranty-exclusions",
+          "retrieved": [
+            "warranty-exclusions",
+            "warranty-policy",
+            "payment-close"
+          ],
+          "rank": 1
+        }
+      ]
+    }
+  ],
+  "unknown_abstention_rate": 1.0,
+  "known_coverage": 0.7917,
+  "unknown_cases": [
+    {
+      "query": "明天天气怎么样",
+      "abstained": true
+    },
+    {
+      "query": "帮我写一首关于月亮的诗",
+      "abstained": true
+    },
+    {
+      "query": "北京到上海的飞机航班",
+      "abstained": true
+    },
+    {
+      "query": "一元二次方程怎么求解",
+      "abstained": true
+    },
+    {
+      "query": "推荐附近好吃的火锅",
+      "abstained": true
+    },
+    {
+      "query": "火星上有没有生命",
+      "abstained": true
+    }
+  ],
+  "known_cases": [
+    {
+      "query": "普通现货付款后多久发货",
+      "supported": true
+    },
+    {
+      "query": "物流已经三天不更新了该怎么催",
+      "supported": false
+    },
+    {
+      "query": "发货后能修改收货地址吗",
+      "supported": true
+    },
+    {
+      "query": "显示签收却没收到包裹该找谁",
+      "supported": true
+    },
+    {
+      "query": "七天无理由退货的运费谁付",
+      "supported": true
+    },
+    {
+      "query": "定制商品能申请无理由退货吗",
+      "supported": true
+    },
+    {
+      "query": "退款验收通过后多久能到账",
+      "supported": true
+    },
+    {
+      "query": "退款五个工作日还没入账怎么办",
+      "supported": true
+    },
+    {
+      "query": "银行卡对同一个订单重复扣款了",
+      "supported": true
+    },
+    {
+      "query": "已经付款订单仍是待支付",
+      "supported": true
+    },
+    {
+      "query": "没支付的订单多久关闭",
+      "supported": false
+    },
+    {
+      "query": "不同订单是否能合并付款",
+      "supported": true
+    },
+    {
+      "query": "登录验证码多久会过期",
+      "supported": true
+    },
+    {
+      "query": "绑定的手机停用如何找回密码",
+      "supported": true
+    },
+    {
+      "query": "有陌生设备登录我的账号怎么办",
+      "supported": true
+    },
+    {
+      "query": "注销账号前需要处理哪些订单",
+      "supported": true
+    },
+    {
+      "query": "公司发票开具需要什么信息",
+      "supported": false
+    },
+    {
+      "query": "是否支持增值税专用发票",
+      "supported": true
+    },
+    {
+      "query": "发票公司名称写错如何更正",
+      "supported": true
+    },
+    {
+      "query": "全额退货退款后发票怎么处理",
+      "supported": true
+    },
+    {
+      "query": "设备保修期限是多少个月",
+      "supported": true
+    },
+    {
+      "query": "免费维修需要提供什么凭证",
+      "supported": false
+    },
+    {
+      "query": "摔坏的设备是否可以免费维修",
+      "supported": false
+    },
+    {
+      "query": "付费维修报价需要先确认吗",
+      "supported": true
+    }
+  ]
+}
