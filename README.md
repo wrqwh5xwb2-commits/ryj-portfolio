@@ -28,6 +28,14 @@ Python + FastAPI + scikit-learn + SQLite 实现客服问题分类、规范检索
 
 ![知答 SupportLab 实际运行截图](./09-SupportLab/output/playwright/05-answer.png)
 
+## 新增 OpenCV 项目：纸境 ScanLab
+
+[进入源码与运行说明](./10-ScanLab/) · [从零上手](./10-ScanLab/docs/01-从零上手.md) · [逐条评测](./10-ScanLab/docs/benchmark.json)
+
+OpenCV + Python + FastAPI 实现文档四角检测、透视校正、手动修边、光照增强与黑白扫描。附15项自动测试、真实界面截图和中文教程；固定合成开发集24张图中20张定位达标，尚未进行真实手机照片集验证。基础版本采用AI辅助开发，不含OCR。
+
+![纸境 ScanLab 实际运行截图](./10-ScanLab/output/playwright/workspace.png)
+
 ## 项目索引
 
 | # | 项目 | 类型 | 一句话 |
@@ -41,6 +49,7 @@ Python + FastAPI + scikit-learn + SQLite 实现客服问题分类、规范检索
 | 07 | [晨达微信小程序](./07-晨达微信小程序/) | 小程序 | 8页面+云开发后端 |
 | 08 | [Hadoop+HBase 环境搭建](./08-Hadoop-HBase环境搭建/) | 大数据运维 | 虚拟机伪分布式全链路排错 |
 | 09 | [知答 SupportLab](./09-SupportLab/) | AI 应用 / NLP / 全栈 | 问题分类、规范检索、人工工单与可复现评测 |
+| 10 | [纸境 ScanLab](./10-ScanLab/) | OpenCV / 计算机视觉 / 全栈 | 文档四角定位、透视校正、图像增强与可复现评测 |
 
 ---
 

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>纸境 ScanLab · OpenCV 文档扫描实验室</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">纸境<span>ScanLab</span></a>
+      <nav aria-label="主导航">
+        <button data-page="workspace" class="active">扫描工作台</button
+        ><button data-page="benchmark">效果评测</button
+        ><button data-page="learn">学习路线</button>
+      </nav>
+      <span class="local">本机处理 · 无需密钥</span>
+    </header>
+    <main>
+      <div id="toast" role="status" aria-live="polite" hidden></div>
+      <section id="workspace" class="page">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">OPENCV DOCUMENT LAB</p>
+            <h1>把随手拍，整理成一页清晰。</h1>
+            <p>找到边缘，拉正视角。每一步处理，都看得见。</p>
+          </div>
+          <div class="hero-note">
+            轮廓检测 / 透视变换 / 光照增强<br />传统计算机视觉 · 不含 OCR
+          </div>
+        </div>
+        <div class="workbench">
+          <aside class="controls">
+            <h2>选择一张图片</h2>
+            <label class="upload"
+              >导入文档照片<input
+                id="file"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+            /></label>
+            <p class="hint">
+              JPG / PNG / WebP · 最大12MB<br />图片在本机处理，不保存扫描历史。
+            </p>
+            <div class="rule"></div>
+            <h3>先用示例试一试</h3>
+            <div class="samples">
+              <button class="sample action" data-sample="perspective">
+                倾斜文档</button
+              ><button class="sample action" data-sample="shadow">
+                不均匀光照</button
+              ><button class="sample action" data-sample="tilted">
+                旋转纸张</button
+              ><button class="sample action" data-sample="blur">失焦图片</button
+              ><button class="sample action" data-sample="occluded">
+                边缘遮挡</button
+              ><button class="sample action" data-sample="blank">
+                空白图片
+              </button>
+            </div>
+            <p class="hint">示例均为程序生成的测试图。</p>
+            <div class="rule"></div>
+            <h3>输出设置</h3>
+            <label
+              >纸张比例<select id="aspect">
+                <option value="auto">自动估计</option>
+                <option value="a4">A4 竖向比例</option>
+                <option value="a4-landscape">A4 横向比例</option>
+              </select></label
+            ><label
+              >二值化局部窗口 <span id="block-label">35</span
+              ><input
+                id="block"
+                type="range"
+                min="3"
+                max="101"
+                step="2"
+                value="35" /></label
+            ><label
+              >二值化偏移 <span id="offset-label">12</span
+              ><input
+                id="offset"
+                type="range"
+                min="-10"
+                max="30"
+                step="1"
+                value="12" /></label
+            ><button id="apply" class="primary action" disabled>
+              应用四角与参数</button
+            ><button id="detect" class="secondary action" disabled>
+              重新自动找边
+            </button>
+            <p class="hint">自动比例由边长估计，不代表纸张真实物理尺寸。</p>
+          </aside>
+          <div class="images">
+            <div class="image-columns">
+              <section class="image-panel">
+                <div class="panel-top">
+                  <h2>01 <span>原图与四角</span></h2>
+                  <span id="source-size">等待图片</span>
+                </div>
+                <div class="stage source-stage">
+                  <canvas id="canvas" aria-label="原图与四角调整区域"></canvas>
+                  <div id="source-empty" class="empty">
+                    <div class="paper-glyph">＋</div>
+                    <h3>从一张照片开始</h3>
+                    <p>导入你拍摄的文档，<br />或点击左边的「倾斜文档」。</p>
+                  </div>
+                </div>
+                <div class="panel-bottom">
+                  <span id="corner-hint"
+                    >拖动蓝色圆点，让它贴合纸张四个角。</span
+                  >
+                </div>
+                <details class="coordinates">
+                  <summary>精确调整四角坐标（百分比）</summary>
+                  <div id="coordinates"></div>
+                </details>
+              </section>
+              <section class="image-panel">
+                <div class="panel-top">
+                  <h2>02 <span>校正预览</span></h2>
+                  <span id="result-size">等待处理</span>
+                </div>
+                <div class="result-tabs" role="group" aria-label="输出模式">
+                  <button class="selected" data-mode="color">彩色校正</button
+                  ><button data-mode="enhanced">灰度增强</button
+                  ><button data-mode="binary">黑白扫描</button>
+                </div>
+                <div class="stage result-stage">
+                  <img id="result" alt="文档校正结果" hidden />
+                  <div id="result-empty" class="empty">
+                    <h3>让纸张回到正面</h3>
+                    <p>完成四角定位后，<br />在这里比较不同处理效果。</p>
+                  </div>
+                </div>
+                <div class="panel-bottom">
+                  <button id="download" class="primary" disabled>
+                    下载当前 PNG</button
+                  ><button id="metadata" class="text-button" disabled>
+                    导出参数 JSON
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div id="status" class="status" aria-live="polite">
+              准备就绪。示例和处理算法都在本机运行。
+            </div>
+            <div class="metrics">
+              <div><span>角点来源</span><strong id="method">—</strong></div>
+              <div><span>轮廓候选</span><strong id="candidates">—</strong></div>
+              <div><span>纸张占比</span><strong id="coverage">—</strong></div>
+              <div><span>处理用时</span><strong id="latency">—</strong></div>
+            </div>
+            <details class="pipeline">
+              <summary>展开算法过程：边缘图与处理说明</summary>
+              <div class="pipeline-body">
+                <img id="edges" alt="Canny边缘图" hidden />
+                <div>
+                  <h3>从像素到一张平整的纸</h3>
+                  <ol>
+                    <li>灰度化与高斯平滑，减轻噪声。</li>
+                    <li>Canny边缘与Otsu阈值提供候选轮廓。</li>
+                    <li>多边形逼近，筛选凸四边形。</li>
+                    <li>用四点对应关系计算透视变换。</li>
+                    <li>估计局部光照，再做增强与自适应阈值。</li>
+                  </ol>
+                  <p>没有识别纸上文字，也无法恢复被遮挡或严重失焦的内容。</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section id="benchmark" class="page" hidden>
+        <div class="hero">
+          <div>
+            <p class="eyebrow">MEASURE BEFORE CLAIMING</p>
+            <h1>把效果放到坐标里验证。</h1>
+            <p>合成图片保留真实角点，因此可以直接测量算法偏差。</p>
+          </div>
+        </div>
+        <div id="report"></div>
+      </section>
+      <section id="learn" class="page" hidden>
+        <div class="hero">
+          <div>
+            <p class="eyebrow">BUILD YOUR UNDERSTANDING</p>
+            <h1>先拖动一个角，再理解一张矩阵。</h1>
+            <p>每次只学一个环节，用看得见的结果验证理解。</p>
+          </div>
+        </div>
+        <div class="lessons">
+          <article>
+            <span>01</span>
+            <h2>比较处理前后</h2>
+            <p>
+              选择「倾斜文档」，切换彩色、增强和黑白模式。说出几何校正与图像增强各改变了什么。
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h2>亲手修一次边</h2>
+            <p>
+              拖动一个蓝色角点，再点击应用。观察裁剪范围变化。用「边缘遮挡」理解自动检测会失败。
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h2>看懂算法中间图</h2>
+            <p>
+              展开边缘图，找到纸张外边界与内部文字。解释为什么最大的四边形有时也会选错。
+            </p>
+          </article>
+          <article>
+            <span>04</span>
+            <h2>阅读四点变换</h2>
+            <p>
+              打开 app/vision.py 的 rectify
+              函数，理解源坐标、目标坐标和3×3变换矩阵。
+            </p>
+          </article>
+          <article>
+            <span>05</span>
+            <h2>用数据验证</h2>
+            <p>
+              运行
+              check.cmd，读每种条件的误差。新增独立样本，保留失败案例，避免只看漂亮截图。
+            </p>
+          </article>
+          <article>
+            <span>06</span>
+            <h2>讲清自己的贡献</h2>
+            <p>
+              亲手改进一个失败场景，记录修改前后的数据。说明当前不支持曲面书页、OCR和实物尺寸测量。
+            </p>
+          </article>
+        </div>
+        <p class="learning-note">
+          完整教学、演示稿和面试问题见项目 docs 文件夹。代码与基础版本采用 AI
+          辅助开发。
+        </p>
+      </section>
+    </main>
+    <footer>
+      <span>纸境 ScanLab</span
+      ><span>OpenCV · Python · FastAPI · 原创合成评测数据</span>
+    </footer>
+  </body>
+</html>

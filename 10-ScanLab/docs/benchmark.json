@@ -1,0 +1,230 @@
+{
+  "created_at": "2026-09-26T05:36:26.281826+00:00",
+  "opencv_version": "5.0.0",
+  "data": "24 positive synthetic development cases + 4 uniform negative images; not real camera validation",
+  "criterion": "mean corner distance / image diagonal <= 0.025 AND polygon IoU >= 0.90",
+  "case_count": 24,
+  "pass_count": 20,
+  "detection_count": 24,
+  "blank_rejections": 4,
+  "blank_count": 4,
+  "p95_detect_ms": 13.1,
+  "cases": [
+    {
+      "condition": "perspective",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.00073,
+      "iou": 0.9971,
+      "pass": true,
+      "detect_ms": 13.02
+    },
+    {
+      "condition": "perspective",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.00041,
+      "iou": 0.998,
+      "pass": true,
+      "detect_ms": 12.25
+    },
+    {
+      "condition": "perspective",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.00088,
+      "iou": 0.9966,
+      "pass": true,
+      "detect_ms": 14.61
+    },
+    {
+      "condition": "perspective",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.00102,
+      "iou": 0.9964,
+      "pass": true,
+      "detect_ms": 13.08
+    },
+    {
+      "condition": "shadow",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.00032,
+      "iou": 0.9985,
+      "pass": true,
+      "detect_ms": 12.27
+    },
+    {
+      "condition": "shadow",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.00044,
+      "iou": 0.9985,
+      "pass": true,
+      "detect_ms": 12.25
+    },
+    {
+      "condition": "shadow",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.00031,
+      "iou": 0.9979,
+      "pass": true,
+      "detect_ms": 11.78
+    },
+    {
+      "condition": "shadow",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.0004,
+      "iou": 0.9988,
+      "pass": true,
+      "detect_ms": 12.14
+    },
+    {
+      "condition": "tilted",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.00047,
+      "iou": 0.9975,
+      "pass": true,
+      "detect_ms": 12.88
+    },
+    {
+      "condition": "tilted",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.00047,
+      "iou": 0.9975,
+      "pass": true,
+      "detect_ms": 13.1
+    },
+    {
+      "condition": "tilted",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.00047,
+      "iou": 0.9975,
+      "pass": true,
+      "detect_ms": 12.74
+    },
+    {
+      "condition": "tilted",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.00047,
+      "iou": 0.9975,
+      "pass": true,
+      "detect_ms": 12.76
+    },
+    {
+      "condition": "blur",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.0018,
+      "iou": 0.993,
+      "pass": true,
+      "detect_ms": 10.54
+    },
+    {
+      "condition": "blur",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.00173,
+      "iou": 0.9929,
+      "pass": true,
+      "detect_ms": 10.15
+    },
+    {
+      "condition": "blur",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.00196,
+      "iou": 0.9921,
+      "pass": true,
+      "detect_ms": 9.43
+    },
+    {
+      "condition": "blur",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.0021,
+      "iou": 0.9923,
+      "pass": true,
+      "detect_ms": 9.63
+    },
+    {
+      "condition": "lowcontrast",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.00042,
+      "iou": 0.9981,
+      "pass": true,
+      "detect_ms": 11.81
+    },
+    {
+      "condition": "lowcontrast",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.00082,
+      "iou": 0.9975,
+      "pass": true,
+      "detect_ms": 11.46
+    },
+    {
+      "condition": "lowcontrast",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.00054,
+      "iou": 0.9983,
+      "pass": true,
+      "detect_ms": 12.2
+    },
+    {
+      "condition": "lowcontrast",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.00056,
+      "iou": 0.9987,
+      "pass": true,
+      "detect_ms": 12.47
+    },
+    {
+      "condition": "occluded",
+      "seed": 101,
+      "detected": true,
+      "corner_error_diagonal": 0.02894,
+      "iou": 0.8978,
+      "pass": false,
+      "detect_ms": 11.57
+    },
+    {
+      "condition": "occluded",
+      "seed": 202,
+      "detected": true,
+      "corner_error_diagonal": 0.03909,
+      "iou": 0.866,
+      "pass": false,
+      "detect_ms": 11.32
+    },
+    {
+      "condition": "occluded",
+      "seed": 303,
+      "detected": true,
+      "corner_error_diagonal": 0.04014,
+      "iou": 0.8588,
+      "pass": false,
+      "detect_ms": 12.07
+    },
+    {
+      "condition": "occluded",
+      "seed": 404,
+      "detected": true,
+      "corner_error_diagonal": 0.03568,
+      "iou": 0.8897,
+      "pass": false,
+      "detect_ms": 12.37
+    }
+  ]
+}
