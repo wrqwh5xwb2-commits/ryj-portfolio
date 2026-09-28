@@ -1,0 +1,6 @@
+{
+  "socket_connect_blocked": true,
+  "line_count": 9,
+  "status": "ready",
+  "meaning": "Python socket connection guard during fresh engine initialization and inference; not an OS firewall audit"
+}

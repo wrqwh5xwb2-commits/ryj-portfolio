@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>读字 OCRDesk · 本机文字校对工作台</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">读字 <span>OCRDesk</span></a
+      ><span>图片 → 识别 → 校对 → 导出</span
+      ><a
+        href="https://github.com/RapidAI/RapidOCR"
+        target="_blank"
+        rel="noreferrer"
+        >基于 RapidOCR ↗</a
+      >
+    </header>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">LOCAL DOCUMENT WORKSPACE</p>
+        <h1>读出文字，再认真核对。</h1>
+        <p>识别结果与原图放在一起。每一行都能修改，每一次校对都有记录。</p>
+      </div>
+      <div class="toolbar">
+        <label class="upload"
+          >导入图片<input
+            id="file"
+            type="file"
+            accept="image/png,image/jpeg,image/webp" /></label
+        ><span class="divider"></span><span>试试示例</span
+        ><button data-sample="clean">中文清单</button
+        ><button data-sample="rotated">轻微旋转</button
+        ><button data-sample="dim">暗光图片</button
+        ><button data-sample="blurred">模糊图片</button
+        ><button data-sample="tiny">过小文字</button
+        ><button data-sample="blank">空白图片</button>
+      </div>
+      <div id="status" role="status" aria-live="polite">
+        支持 JPG / PNG / WebP，最大8MB。模型在本机运行，不保存识别历史。
+      </div>
+      <div class="workbench">
+        <section class="document">
+          <div class="section-title">
+            <h2>01 <span>原图与文字框</span></h2>
+            <span id="dimensions">等待图片</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="canvas" aria-label="识别文字框预览" hidden></canvas>
+            <div id="placeholder">
+              <b>从一张清晰的图片开始</b>
+              <p>导入照片，或选择上方的中文清单。</p>
+              <span>示例文字均为虚构内容</span>
+            </div>
+          </div>
+          <div class="legend">
+            <span class="box-key"></span> 已检测文字
+            <span class="box-key low"></span> 低于复核阈值
+            <span>点击文字框定位到右侧</span>
+          </div>
+          <p class="note">
+            此项目负责识别文字。拍摄角度较大时，可先用作品集中的 ScanLab
+            拉正图片。
+          </p>
+        </section>
+        <section class="review">
+          <div class="section-title">
+            <h2>02 <span>逐行校对</span></h2>
+            <strong id="count">0 行</strong>
+          </div>
+          <div class="review-settings">
+            <label
+              >复核分数阈值
+              <input
+                id="threshold"
+                type="number"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.97" /></label
+            ><label class="check"
+              ><input id="only-low" type="checkbox" />只看低分</label
+            >
+          </div>
+          <p class="note score-note">
+            分数是模型输出，不是“正确概率”；高分文字也可能识别错。
+          </p>
+          <div id="rows" class="rows">
+            <div class="empty">识别后，文字将在这里出现。</div>
+          </div>
+          <div class="review-footer">
+            <span id="review-count">尚未识别</span
+            ><button id="mark-all" disabled>全部标记已核对</button>
+          </div>
+        </section>
+      </div>
+      <section class="exports">
+        <div>
+          <h2>带着校对记录导出</h2>
+          <p>JSON / CSV 保留原始识别与修改内容；TXT 导出当前文本。</p>
+        </div>
+        <div class="export-buttons">
+          <button data-export="txt" disabled>下载 TXT</button
+          ><button data-export="json" disabled>下载 JSON</button
+          ><button class="primary" data-export="csv" disabled>下载 CSV</button>
+        </div>
+      </section>
+      <details id="evaluation">
+        <summary>查看真实运行结果与项目来源</summary>
+        <div class="evaluation-body">
+          <div>
+            <h3>复用与新增</h3>
+            <p>
+              复用 RapidOCR 3.9.2 的检测、方向分类和文字识别模型，使用 ONNX
+              Runtime CPU
+              推理。新增图片校验、文字框与行联动、逐行校对、导出和可复现小样本评测。
+            </p>
+            <p>
+              首次安装需要联网，模型随依赖提供。当前页面没有外部字体或分析脚本。
+            </p>
+          </div>
+          <div>
+            <h3>固定合成开发集</h3>
+            <div id="benchmark">读取报告中…</div>
+            <p>同一种文字与版式的5种条件，加1张空白图；不是实际业务准确率。</p>
+          </div>
+        </div>
+      </details>
+    </main>
+    <footer>
+      <span>读字 OCRDesk · 开源复用与应用工程练习</span
+      ><span>基础版本采用 AI 辅助开发 · Apache-2.0 上游</span>
+    </footer>
+  </body>
+</html>

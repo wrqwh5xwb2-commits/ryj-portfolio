@@ -1,0 +1,75 @@
+{
+  "created_at": "2026-09-27T18:31:13.181564+00:00",
+  "engine": "RapidOCR 3.9.2 / CPU",
+  "dataset": "5 positive synthetic development images + 1 blank, same text/font/layout, not real documents",
+  "normalization": "NFKC and remove whitespace; punctuation retained; detector reading order retained",
+  "character_error_rate": 0.0,
+  "cases": [
+    {
+      "condition": "clean",
+      "expected_chars": 86,
+      "edit_distance": 0,
+      "cer": 0.0,
+      "line_count": 9,
+      "elapsed_ms": 891.5,
+      "expected_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "recognized_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "empty_correct": null
+    },
+    {
+      "condition": "dim",
+      "expected_chars": 86,
+      "edit_distance": 0,
+      "cer": 0.0,
+      "line_count": 9,
+      "elapsed_ms": 837.7,
+      "expected_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "recognized_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "empty_correct": null
+    },
+    {
+      "condition": "rotated",
+      "expected_chars": 86,
+      "edit_distance": 0,
+      "cer": 0.0,
+      "line_count": 9,
+      "elapsed_ms": 1694.3,
+      "expected_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "recognized_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "empty_correct": null
+    },
+    {
+      "condition": "blurred",
+      "expected_chars": 86,
+      "edit_distance": 0,
+      "cer": 0.0,
+      "line_count": 9,
+      "elapsed_ms": 3713.6,
+      "expected_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "recognized_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "empty_correct": null
+    },
+    {
+      "condition": "tiny",
+      "expected_chars": 86,
+      "edit_distance": 0,
+      "cer": 0.0,
+      "line_count": 9,
+      "elapsed_ms": 2742.0,
+      "expected_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "recognized_text": "星河文具采购清单仅用于识别演示单号DEMO-1001日期2026-09-28水性笔3盒12.00元笔记本2本18.00元文件夹1个8.50元合计38.50元请核对数量与金额",
+      "empty_correct": null
+    },
+    {
+      "condition": "blank",
+      "expected_chars": 0,
+      "edit_distance": 0,
+      "cer": null,
+      "line_count": 0,
+      "elapsed_ms": 3319.3,
+      "expected_text": "",
+      "recognized_text": "",
+      "empty_correct": true
+    }
+  ]
+}

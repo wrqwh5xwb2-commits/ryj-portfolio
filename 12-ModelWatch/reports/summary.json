@@ -1,0 +1,151 @@
+{
+  "generated_at": "2026-09-27T18:30:32.969820+00:00",
+  "seed": 20260928,
+  "versions": {
+    "python": "3.13.14",
+    "evidently": "0.7.23",
+    "sklearn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6"
+  },
+  "data": {
+    "source": "原创合成数据；没有真实设备或客户数据",
+    "train_rows": 6000,
+    "reference_rows": 2000,
+    "current_rows": 2000,
+    "train_sha256": "71a9bbc21040d79dd594a0d34def80c69af6d52899ddcf6329f90409d6178156",
+    "reference_sha256": "d4ae55401c462f3147cc2fb6eed5edccf6434900e042492da13be52c090ccff6"
+  },
+  "thresholds": {
+    "psi": 0.2,
+    "drift_share": 0.4,
+    "accuracy_drop": 0.05
+  },
+  "reference_quality": {
+    "accuracy": 0.801,
+    "f1": 0.8043264503441495,
+    "roc_auc": 0.8858092261142417,
+    "log_loss": 0.4244612901207761
+  },
+  "scenarios": [
+    {
+      "id": "stable",
+      "title": "正常批次",
+      "description": "独立抽取的同分布样本，作为基线对照。",
+      "rows": 2000,
+      "quality": {
+        "accuracy": 0.817,
+        "f1": 0.8107549120992761,
+        "roc_auc": 0.8922410990367523,
+        "log_loss": 0.41695260250627975
+      },
+      "drifted_count": 0,
+      "columns": {
+        "temperature": {
+          "psi": 0.00670711741039887,
+          "drifted": false
+        },
+        "vibration": {
+          "psi": 0.005796244417475349,
+          "drifted": false
+        },
+        "pressure": {
+          "psi": 0.009397301862059709,
+          "drifted": false
+        },
+        "workload": {
+          "psi": 0.009046022029188118,
+          "drifted": false
+        },
+        "ambient_noise": {
+          "psi": 0.011116211615658754,
+          "drifted": false
+        }
+      },
+      "evidently_accuracy": 0.817,
+      "alerts": [],
+      "data_sha256": "4a03f2520faf641566f8e3d0c2f6ac610121616b6d5a7264c5d11953dc11f169"
+    },
+    {
+      "id": "sensor_shift",
+      "title": "传感器偏移",
+      "description": "温度 +2.0、振动 +1.5；原始状态标签不变。",
+      "rows": 2000,
+      "quality": {
+        "accuracy": 0.506,
+        "f1": 0.6646300067888663,
+        "roc_auc": 0.8922410990367523,
+        "log_loss": 1.9054730570166805
+      },
+      "drifted_count": 2,
+      "columns": {
+        "temperature": {
+          "psi": 3.807801976040429,
+          "drifted": true
+        },
+        "vibration": {
+          "psi": 2.1285887847368534,
+          "drifted": true
+        },
+        "pressure": {
+          "psi": 0.009397301862059709,
+          "drifted": false
+        },
+        "workload": {
+          "psi": 0.009046022029188118,
+          "drifted": false
+        },
+        "ambient_noise": {
+          "psi": 0.011116211615658754,
+          "drifted": false
+        }
+      },
+      "evidently_accuracy": 0.506,
+      "alerts": [
+        "输入漂移：检查采集管道与特征分布",
+        "效果下降：准确率比参考批降低至少 5 个百分点"
+      ],
+      "data_sha256": "e6726b1fa2bfae4b11875c18fd33f6d1bde08f657f1041d4793d4e0846f90c3f"
+    },
+    {
+      "id": "concept_shift",
+      "title": "标签关系反转",
+      "description": "输入和正常批次完全一致，但标签反转，用于演示概念漂移。",
+      "rows": 2000,
+      "quality": {
+        "accuracy": 0.183,
+        "f1": 0.17139959432048682,
+        "roc_auc": 0.10775890096324772,
+        "log_loss": 1.9886151570811053
+      },
+      "drifted_count": 0,
+      "columns": {
+        "temperature": {
+          "psi": 0.00670711741039887,
+          "drifted": false
+        },
+        "vibration": {
+          "psi": 0.005796244417475349,
+          "drifted": false
+        },
+        "pressure": {
+          "psi": 0.009397301862059709,
+          "drifted": false
+        },
+        "workload": {
+          "psi": 0.009046022029188118,
+          "drifted": false
+        },
+        "ambient_noise": {
+          "psi": 0.011116211615658754,
+          "drifted": false
+        }
+      },
+      "evidently_accuracy": 0.183,
+      "alerts": [
+        "效果下降：准确率比参考批降低至少 5 个百分点"
+      ],
+      "data_sha256": "37755021cab6572b0be09a81e25b9cb38256ff8090703af50232e00beed8d024"
+    }
+  ]
+}

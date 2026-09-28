@@ -1,0 +1,12 @@
+OCRDesk is an independent educational application using RapidOCR.
+RapidOCR: Copyright (c) 2021 RapidOCR Authors. All rights reserved.
+RapidOCR source and README quickstart are licensed under Apache License 2.0.
+The modified quickstart is marked in upstream/quickstart.py.
+OCR model rights belong to Baidu / upstream PaddleOCR rights holders, as
+stated by the pinned RapidOCR README. We install models from the dependency
+distribution and do not redistribute model binaries in this repository.
+
+Application workflow, UI, tests, documentation, and synthetic sample text:
+Copyright (c) 2026 OCRDesk contributors. Developed with AI assistance.
+The Windows launch utility is adapted from the portfolio's ScanLab launcher.
+No Microsoft font files or third-party sample photographs are distributed.

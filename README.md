@@ -36,6 +36,17 @@ OpenCV + Python + FastAPI 实现文档四角检测、透视校正、手动修边
 
 ![纸境 ScanLab 实际运行截图](./10-ScanLab/output/playwright/workspace.png)
 
+## 开源复现与工程扩展
+
+根据人工智能技术应用专业的学习方向，新增两项实际复现的开源应用，保留上游许可、版本、运行结果与改造说明。
+
+| 项目 | 复用来源 | 新增能力 |
+| --- | --- | --- |
+| [读字 OCRDesk](./11-OCRDesk/) | [RapidAI/RapidOCR](https://github.com/RapidAI/RapidOCR) | 本机文字识别、逐行校对、文字框联动、带原文的JSON/CSV导出 |
+| [模型值班室 ModelWatch](./12-ModelWatch/) | [evidentlyai/evidently](https://github.com/evidentlyai/evidently) | 训练与评估隔离、三种故障对照、数据漂移与效果下降报告 |
+
+两项目共22项自动测试通过，提供中文教学和面试演示说明。基础版本采用AI辅助开发；上游模型和统计工具明确署名，合成演示结果不等于真实业务性能。详见[筛选与复现报告](./docs/开源项目筛选与复现.md)。
+
 ## 项目索引
 
 | # | 项目 | 类型 | 一句话 |
@@ -50,6 +61,8 @@ OpenCV + Python + FastAPI 实现文档四角检测、透视校正、手动修边
 | 08 | [Hadoop+HBase 环境搭建](./08-Hadoop-HBase环境搭建/) | 大数据运维 | 虚拟机伪分布式全链路排错 |
 | 09 | [知答 SupportLab](./09-SupportLab/) | AI 应用 / NLP / 全栈 | 问题分类、规范检索、人工工单与可复现评测 |
 | 10 | [纸境 ScanLab](./10-ScanLab/) | OpenCV / 计算机视觉 / 全栈 | 文档四角定位、透视校正、图像增强与可复现评测 |
+| 11 | [读字 OCRDesk](./11-OCRDesk/) | 开源复用 / OCR / AI应用 | 本机识别、人工校对、文字框联动与结果导出 |
+| 12 | [模型值班室 ModelWatch](./12-ModelWatch/) | 开源复用 / 模型评估 | 受控场景实验、输入漂移与预测效果监测 |
 
 ---
 
